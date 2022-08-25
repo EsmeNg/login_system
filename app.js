@@ -13,17 +13,7 @@ app.use(express.static('public'))
 const routes = require('./routes')
 app.use(routes)
 
-const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost:27017/users')
-const db = mongoose.connection
-
-db.on('error', error => {
-  console.log(error)
-})
-
-db.once('open', () => {
-  console.log(`mongodb is running!`)
-})
+require('./config/mongoose')
 
 let email = ''
 let loginFailed = false
