@@ -15,9 +15,6 @@ app.use(routes)
 
 require('./config/mongoose')
 
-let email = ''
-let loginFailed = false
-
 app.listen(port, () => {
   console.log(`localhost:${port} is running!`)
 })

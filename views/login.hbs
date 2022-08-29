@@ -1,14 +1,27 @@
-  <h1>Account Login</h1>
-  <form action='/login' method='POST'>
-    <label for="email">Email</label>
-    <input class='form-control' type='text' placeholder='Email' name='email' value="{{email}}" id="email" required/>
-    <label for="password">Password</label>
-    <input class='form-control' type='password' placeholder='Password' name='password' value="" id="password" required/>
-    {{#if loginFailed}}
-    <div class="error">
-    <p>Error</p>
-    <p>Please enter valid username and Password</p>
+  
+  <div class="container d-flex justify-content-center">
+    <div class="card w-75">
+      <div class="card-body">
+        <h3 class="card-title text-center my-2">ACCOUNT LOGIN</h3>
+        <form action='/login' method='POST' class="d-flex flex-column justify-content-center align-items-center">
+          <div class="col-10 mb-2">
+            <label for="email">Email</label>
+            <input class='form-control' type='text' placeholder='Email' name='email' value="{{loginAttempt.email}}" id="email" required/>
+          </div>
+          <div class="col-10 mb-4">
+            <label for="password">Password</label>
+            <input class='form-control' type='password' placeholder='Password' name='password' value="" id="password" required/>
+          </div>
+          <div class="col-10">
+            {{#if loginAttempt.loginStatus.failed}}
+            <div class="alert alert-danger alert-dismissible fade show py-1" role="alert">
+              <strong>Error!</strong> Please Enter valid Email and Password.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {{/if}}
+          </div>
+          <button class='btn btn-outline-primary mt-3' type='submit'>Sign in</button>
+        </form>
     </div>
-    {{/if}}
-    <button class='btn btn-outline-primary' type='submit'>Sign in</button>
-  </form>
+  </div>
+  </div>
